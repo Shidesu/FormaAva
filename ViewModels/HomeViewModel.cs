@@ -25,6 +25,8 @@ public partial class HomeViewModel : ViewModelBase
 
             UpdateEquipmentFromTelemetry(args);
         };
+        
+        LoadAsync().ConfigureAwait(false);
     }
 
     public AvaloniaList<EquipmentUnit> Units { get; } = [];
@@ -34,6 +36,9 @@ public partial class HomeViewModel : ViewModelBase
         var equipment = Units
             .Select(((unit, i) => (Unit: unit, Index: i)))
             .FirstOrDefault((x) => x.Unit.Id == args.EquipmentId);
+
+        if (equipment.Unit is null)
+            return;
 
         Units[equipment.Index] = equipment.Unit with
         {
@@ -45,7 +50,7 @@ public partial class HomeViewModel : ViewModelBase
     }
 
     [RelayCommand]
-    private async Task LoadAsync(CancellationToken cancellationToken)
+    private async Task LoadAsync(CancellationToken cancellationToken = default)
     {
         Units.Clear();
         Units.AddRange(await _equipmentService.GetFleetAsync(cancellationToken));

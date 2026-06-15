@@ -34,28 +34,30 @@ public class MockEquipmentService : IEquipmentService, IDisposable
 
         _backgroundTask = Task.Run(async () =>
         {
-            await _timer.WaitForNextTickAsync();
-            var randomIndex = Random.Shared.Next(0, _equipmentUnits.Count);
-
-            var equipment = _equipmentUnits[randomIndex];
-
-            equipment = equipment with
+            while (await _timer.WaitForNextTickAsync())
             {
-                Temperature = Random.Shared.NextDouble() * 100,
-                Signal = Random.Shared.Next(0, 100),
-                Battery = Random.Shared.NextDouble() * 100,
-                LastSeen = DateTime.UtcNow,
-            };
+                var randomIndex = Random.Shared.Next(0, _equipmentUnits.Count);
 
-            Dispatcher.UIThread.Post(() =>
-                TelemetryChanged?.Invoke(this,
-                    new TelemetryChangedEventArgs(
-                        equipment.Id,
-                        equipment.Battery,
-                        equipment.Temperature,
-                        equipment.Signal,
-                        equipment.Status,
-                        equipment.LastSeen)));
+                var equipment = _equipmentUnits[randomIndex];
+
+                equipment = equipment with
+                {
+                    Temperature = Random.Shared.NextDouble() * 100,
+                    Signal = Random.Shared.Next(0, 100),
+                    Battery = Random.Shared.NextDouble() * 100,
+                    LastSeen = DateTime.UtcNow,
+                };
+
+                Dispatcher.UIThread.Post(() =>
+                    TelemetryChanged?.Invoke(this,
+                        new TelemetryChangedEventArgs(
+                            equipment.Id,
+                            equipment.Battery,
+                            equipment.Temperature,
+                            equipment.Signal,
+                            equipment.Status,
+                            equipment.LastSeen)));
+            }
         }, _cts.Token);
     }
 

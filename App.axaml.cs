@@ -24,7 +24,8 @@ public partial class App : Application
     {
         var serviceCollection = new ServiceCollection();
 
-        serviceCollection.AddSingleton<MainWindowViewModel>();
+        serviceCollection.AddSingleton<MainViewModel>();
+        serviceCollection.AddSingleton<HomeViewModel>();
         serviceCollection.AddSingleton<IEquipmentService, MockEquipmentService>();
 
         _provider = serviceCollection.BuildServiceProvider();
@@ -33,7 +34,7 @@ public partial class App : Application
         {
             desktop.MainWindow = new MainWindow
             {
-                DataContext = _provider.GetService<MainWindowViewModel>(),
+                DataContext = _provider.GetService<MainViewModel>(),
             };
 
             desktop.Exit += (_, _) => { _provider.Dispose(); };

@@ -22,6 +22,9 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        // Disable Avalonia's built-in DataAnnotations validator to avoid double validation with CommunityToolkit.Mvvm
+        BindingPlugins.DataValidators.RemoveAt(0);
+
         var serviceCollection = new ServiceCollection();
 
         serviceCollection.AddSingleton<MainViewModel>();

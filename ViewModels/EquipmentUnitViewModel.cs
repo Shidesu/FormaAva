@@ -7,8 +7,8 @@ namespace Sentinel.ViewModels;
 public partial class EquipmentUnitViewModel : ObservableObject
 {
     public Guid Id { get; }
-    public string Name { get; }
-    public string Zone { get; }
+    [ObservableProperty] private string _name = string.Empty;
+    [ObservableProperty] private string _zone = string.Empty;
 
     [ObservableProperty] private double _battery;
     [ObservableProperty] private double _temperature;
@@ -19,8 +19,8 @@ public partial class EquipmentUnitViewModel : ObservableObject
     public EquipmentUnitViewModel(EquipmentUnit unit)
     {
         Id = unit.Id;
-        Name = unit.Name;
-        Zone = unit.Zone;
+        _name = unit.Name;
+        _zone = unit.Zone;
         _battery = unit.Battery;
         _temperature = unit.Temperature;
         _signal = unit.Signal;

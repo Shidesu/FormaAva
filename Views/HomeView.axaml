@@ -66,13 +66,30 @@
                 <StackPanel IsVisible="{Binding HasSelection}" Spacing="10">
                     <TextBlock FontWeight="Bold" FontSize="16" Text="Détail"/>
                     <Separator/>
-                    <TextBlock Text="{Binding SelectedUnit.Name, StringFormat='Nom : {0}'}"/>
-                    <TextBlock Text="{Binding SelectedUnit.Zone, StringFormat='Zone : {0}'}"/>
                     <TextBlock Text="{Binding SelectedUnit.Status, StringFormat='Statut : {0}'}"/>
                     <TextBlock Text="{Binding SelectedUnit.Battery, StringFormat='Batterie : {0:F0}%'}"/>
                     <TextBlock Text="{Binding SelectedUnit.Temperature, StringFormat='Température : {0:F2} °C'}"/>
                     <TextBlock Text="{Binding SelectedUnit.Signal, StringFormat='Signal : {0}%'}"/>
                     <TextBlock Text="{Binding SelectedUnit.LastSeen, StringFormat='Vu le : {0:HH:mm:ss}'}"/>
+
+                    <Separator/>
+                    <TextBlock FontWeight="Bold" Text="Édition"/>
+
+                    <ContentControl Content="{Binding EditViewModel}">
+                        <ContentControl.ContentTemplate>
+                            <DataTemplate x:DataType="viewModels:EquipmentEditViewModel">
+                                <StackPanel Spacing="8">
+                                    <TextBox Text="{Binding Name, Mode=TwoWay}"
+                                             Watermark="Nom"/>
+                                    <TextBox Text="{Binding Zone, Mode=TwoWay}"
+                                             Watermark="Zone"/>
+                                    <Button Content="Enregistrer"
+                                            Command="{Binding SaveCommand}"
+                                            HorizontalAlignment="Right"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ContentControl.ContentTemplate>
+                    </ContentControl>
                 </StackPanel>
             </Panel>
         </Border>

@@ -20,7 +20,12 @@ public partial class HomeViewModel : ViewModelBase
     [NotifyPropertyChangedFor(nameof(HasSelection))]
     private EquipmentUnitViewModel? _selectedUnit;
 
+    [ObservableProperty] private EquipmentEditViewModel? _editViewModel;
+
     public bool HasSelection => SelectedUnit is not null;
+
+    partial void OnSelectedUnitChanged(EquipmentUnitViewModel? value)
+        => EditViewModel = value is not null ? new EquipmentEditViewModel(value) : null;
 
     public HomeViewModel(IEquipmentService equipmentService)
     {

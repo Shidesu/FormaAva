@@ -7,17 +7,42 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Sentinel.Views.HomeView"
              x:DataType="viewModels:HomeViewModel">
-    <DataGrid ItemsSource="{Binding Units}" 
-              GridLinesVisibility="All" IsReadOnly="True">
+<DockPanel LastChildFill="True">
+    <TextBox DockPanel.Dock="Top" Text="{Binding Filter}" Watermark="Rechercher..."/>
+    <DataGrid ItemsSource="{Binding Units}"
+              GridLinesVisibility="All"
+              CanUserSortColumns="True"
+              IsReadOnly="True">
         <DataGrid.Columns>
-            <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
-            <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
-            <DataGridTextColumn Header="Zone" Binding="{Binding Zone}" />
-            <DataGridTextColumn Header="Status" Binding="{Binding Status}" />
-            <DataGridTextColumn Header="Battery" Binding="{Binding Battery, StringFormat='Bat {0:F0}%'}" />
-            <DataGridTextColumn Header="Temperature" Binding="{Binding Temperature, StringFormat='{}{0:F2} °C'}" />
-            <DataGridTextColumn Header="Signal" Binding="{Binding Signal, StringFormat='Signal {0}%'}" />
-            <DataGridTextColumn Header="Last Seen" Binding="{Binding LastSeen, StringFormat='{}{0:HH:mm:ss}'}" />
+            <DataGridTextColumn Header="Id"
+                                Binding="{Binding Id, 
+            DataType=models:EquipmentUnit}" />
+            <DataGridTextColumn Header="Name"
+                                Binding="{Binding Name,
+             DataType=models:EquipmentUnit}" />
+            <DataGridTextColumn Header="Zone"
+                                Binding="{Binding Zone,
+             DataType=models:EquipmentUnit}" />
+            <DataGridTextColumn Header="Status"
+                                Binding="{Binding Status,
+             DataType=models:EquipmentUnit}" />
+            <DataGridTextColumn Header="Battery"
+                                Binding="{Binding Battery, 
+                                DataType=models:EquipmentUnit, 
+                                StringFormat='Bat {0:F0}%'}" />
+            <DataGridTextColumn Header="Temperature"
+                                Binding="{Binding Temperature, 
+                                DataType=models:EquipmentUnit, 
+                                StringFormat='{}{0:F2} °C'}" />
+            <DataGridTextColumn Header="Signal"
+                                Binding="{Binding Signal, 
+                                DataType=models:EquipmentUnit, 
+                                StringFormat='Signal {0}%'}" />
+            <DataGridTextColumn Header="Last Seen"
+                                Binding="{Binding LastSeen, 
+                                DataType=models:EquipmentUnit, 
+                                StringFormat='{}{0:HH:mm:ss}'}" />
         </DataGrid.Columns>
     </DataGrid>
+</DockPanel>
 </UserControl>

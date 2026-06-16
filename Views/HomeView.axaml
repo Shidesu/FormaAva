@@ -1,9 +1,8 @@
-﻿<UserControl xmlns="https://github.com/avaloniaui"
+<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="using:Sentinel.ViewModels"
-             xmlns:models="using:Sentinel.Models"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Sentinel.Views.HomeView"
              x:DataType="viewModels:HomeViewModel">
@@ -15,32 +14,32 @@
               IsReadOnly="True">
         <DataGrid.Columns>
             <DataGridTextColumn Header="Id"
-                                Binding="{Binding Id, 
-            DataType=models:EquipmentUnit}" />
+                                Binding="{Binding Id,
+            DataType=viewModels:EquipmentUnitViewModel}" />
             <DataGridTextColumn Header="Name"
                                 Binding="{Binding Name,
-             DataType=models:EquipmentUnit}" />
+             DataType=viewModels:EquipmentUnitViewModel}" />
             <DataGridTextColumn Header="Zone"
                                 Binding="{Binding Zone,
-             DataType=models:EquipmentUnit}" />
+             DataType=viewModels:EquipmentUnitViewModel}" />
             <DataGridTextColumn Header="Status"
                                 Binding="{Binding Status,
-             DataType=models:EquipmentUnit}" />
+             DataType=viewModels:EquipmentUnitViewModel}" />
             <DataGridTextColumn Header="Battery"
-                                Binding="{Binding Battery, 
-                                DataType=models:EquipmentUnit, 
+                                Binding="{Binding Battery,
+                                DataType=viewModels:EquipmentUnitViewModel,
                                 StringFormat='Bat {0:F0}%'}" />
             <DataGridTextColumn Header="Temperature"
-                                Binding="{Binding Temperature, 
-                                DataType=models:EquipmentUnit, 
+                                Binding="{Binding Temperature,
+                                DataType=viewModels:EquipmentUnitViewModel,
                                 StringFormat='{}{0:F2} °C'}" />
             <DataGridTextColumn Header="Signal"
-                                Binding="{Binding Signal, 
-                                DataType=models:EquipmentUnit, 
+                                Binding="{Binding Signal,
+                                DataType=viewModels:EquipmentUnitViewModel,
                                 StringFormat='Signal {0}%'}" />
             <DataGridTextColumn Header="Last Seen"
-                                Binding="{Binding LastSeen, 
-                                DataType=models:EquipmentUnit, 
+                                Binding="{Binding LastSeen,
+                                DataType=viewModels:EquipmentUnitViewModel,
                                 StringFormat='{}{0:HH:mm:ss}'}" />
         </DataGrid.Columns>
     </DataGrid>

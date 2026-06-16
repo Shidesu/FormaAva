@@ -35,7 +35,9 @@ public partial class HomeViewModel : ViewModelBase
         {
             Filter = o => o is EquipmentUnitViewModel vm &&
                           (string.IsNullOrWhiteSpace(_filter) ||
-                           vm.Name.Contains(_filter, StringComparison.OrdinalIgnoreCase))
+                           vm.Name.Contains(_filter, StringComparison.OrdinalIgnoreCase) ||
+                           vm.Zone.Contains(_filter, StringComparison.OrdinalIgnoreCase) ||
+                           vm.Status.ToString().Contains(_filter, StringComparison.OrdinalIgnoreCase))
         };
 
         _equipmentService.TelemetryChanged += (_, args) => UpdateEquipmentFromTelemetry(args);

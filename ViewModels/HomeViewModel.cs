@@ -27,6 +27,9 @@ public partial class HomeViewModel : ViewModelBase
     partial void OnSelectedUnitChanged(EquipmentUnitViewModel? value)
         => EditViewModel = value is not null ? new EquipmentEditViewModel(value) : null;
 
+    [RelayCommand]
+    private void SelectUnit(EquipmentUnitViewModel unit) => SelectedUnit = unit;
+
     public HomeViewModel(IEquipmentService equipmentService)
     {
         _equipmentService = equipmentService;

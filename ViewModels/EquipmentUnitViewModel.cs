@@ -15,8 +15,12 @@ public partial class EquipmentUnitViewModel : ObservableObject
     [ObservableProperty] private double _battery;
     [ObservableProperty] private double _temperature;
     [ObservableProperty] private int _signal;
-    [ObservableProperty] private EquipmentStatus _status;
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(HasAlert))]
+    private EquipmentStatus _status;
     [ObservableProperty] private DateTimeOffset _lastSeen;
+
+    public bool HasAlert => Status != EquipmentStatus.Operational;
 
     private readonly Queue<double> _batteryHistory = new();
     private readonly Queue<double> _temperatureHistory = new();

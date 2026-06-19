@@ -1,0 +1,29 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:Sentinel.Controls">
+
+    <ControlTheme x:Key="{x:Type controls:CircularGauge}" TargetType="controls:CircularGauge">
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="Height" Value="80"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid Width="{TemplateBinding Width}"
+                      Height="{TemplateBinding Height}">
+                    <!-- Outer ring filled by ConicGradientBrush -->
+                    <Ellipse Fill="{TemplateBinding GaugeBrush}"/>
+                    <!-- Inner hole to create the ring shape -->
+                    <Ellipse Width="56" Height="56"
+                             Fill="{DynamicResource SentBrushBackground}"/>
+                    <!-- Value text in centre -->
+                    <TextBlock Text="{TemplateBinding ValueText}"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="13"
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource SentBrushForeground}"/>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+</ResourceDictionary>

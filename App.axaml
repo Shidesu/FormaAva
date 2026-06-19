@@ -15,6 +15,7 @@
                 <ResourceInclude Source="avares://Sentinel/Themes/StatusLedTheme.axaml"/>
                 <ResourceInclude Source="avares://Sentinel/Themes/SignalBarsTheme.axaml"/>
                 <ResourceInclude Source="avares://Sentinel/Themes/SparklineTheme.axaml"/>
+                <ResourceInclude Source="avares://Sentinel/Themes/CircularGaugeTheme.axaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

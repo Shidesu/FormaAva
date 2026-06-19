@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="using:Sentinel.ViewModels"
              xmlns:controls="using:Sentinel.Controls"
+             xmlns:system="using:System"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
              x:Class="Sentinel.Views.EquipmentDetailView"
              x:DataType="viewModels:EquipmentDetailViewModel"
@@ -38,11 +39,14 @@
 
             <!-- Batterie -->
             <StackPanel Spacing="6">
-                <TextBlock Text="{Binding Unit.Battery, StringFormat='Batterie : {0:F0}%'}"
-                           FontSize="16" Foreground="{DynamicResource SentBrushForeground}"/>
-                <controls:Sparkline Values="{Binding Unit.BatteryHistory}"
-                                    Stroke="{DynamicResource SentBrushSparklineBattery}"
-                                    Height="48"/>
+                <TextBlock Text="Batterie" FontSize="14" FontWeight="SemiBold"
+                           Foreground="{DynamicResource SentBrushForeground}"/>
+                <StackPanel Orientation="Horizontal" Spacing="16" VerticalAlignment="Center">
+                    <controls:CircularGauge Value="{Binding Unit.Battery}"/>
+                    <controls:Sparkline Values="{Binding Unit.BatteryHistory}"
+                                        Stroke="{DynamicResource SentBrushSparklineBattery}"
+                                        Height="48" Width="160"/>
+                </StackPanel>
             </StackPanel>
 
             <!-- Température -->

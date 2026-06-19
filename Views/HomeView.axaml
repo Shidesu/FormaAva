@@ -8,6 +8,12 @@
              x:Class="Sentinel.Views.HomeView"
              x:DataType="viewModels:HomeViewModel">
 
+    <UserControl.Styles>
+        <Style Selector="Button:pointerover > Border">
+            <Setter Property="Background" Value="{DynamicResource SentBrushSurfaceAlt}"/>
+        </Style>
+    </UserControl.Styles>
+
     <Grid ColumnDefinitions="*,4,300">
 
         <!-- Left: filter + card grid -->
@@ -37,6 +43,11 @@
                                         CornerRadius="8"
                                         Padding="12"
                                         Width="210">
+                                    <Border.Transitions>
+                                        <Transitions>
+                                            <BrushTransition Property="Background" Duration="0:0:0.15"/>
+                                        </Transitions>
+                                    </Border.Transitions>
                                     <StackPanel Spacing="8">
 
                                         <!-- Header : LED + nom/zone + badge -->

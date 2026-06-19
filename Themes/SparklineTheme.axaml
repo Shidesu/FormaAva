@@ -1,0 +1,18 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:Sentinel.Controls">
+
+    <ControlTheme x:Key="{x:Type controls:Sparkline}" TargetType="controls:Sparkline">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Stroke" Value="#22DD77"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Polyline x:Name="PART_Line"
+                          Stroke="{TemplateBinding Stroke}"
+                          StrokeThickness="1.5"
+                          StrokeLineCap="Round"/>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+</ResourceDictionary>

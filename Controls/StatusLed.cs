@@ -8,7 +8,12 @@ namespace Sentinel.Controls;
 public class StatusLed : TemplatedControl
 {
     public static readonly StyledProperty<EquipmentStatus> StatusProperty =
-        AvaloniaProperty.Register<StatusLed, EquipmentStatus>(nameof(Status));
+        AvaloniaProperty.Register<StatusLed, EquipmentStatus>(nameof(Status), EquipmentStatus.Offline);
+
+    public StatusLed()
+    { 
+         UpdatePseudoClasses(Status);
+    }
 
     public EquipmentStatus Status
     {

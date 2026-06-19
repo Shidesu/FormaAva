@@ -13,11 +13,7 @@
             <Setter Property="Background" Value="{DynamicResource SentBrushSurfaceAlt}"/>
         </Style>
     </UserControl.Styles>
-
-    <Grid ColumnDefinitions="*,4,300">
-
-        <!-- Left: filter + card grid -->
-        <DockPanel Grid.Column="0">
+        <DockPanel>
             <TextBox DockPanel.Dock="Top"
                      Text="{Binding Filter}"
                      Watermark="Rechercher..."
@@ -116,79 +112,4 @@
                 </ItemsControl>
             </ScrollViewer>
         </DockPanel>
-
-        <!-- Splitter -->
-        <GridSplitter Grid.Column="1" ResizeDirection="Columns"/>
-
-        <!-- Right: detail panel -->
-        <Border Grid.Column="2" Padding="12"
-                Background="{DynamicResource SentBrushSurface}">
-            <Panel>
-                <TextBlock IsVisible="{Binding !HasSelection}"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           Foreground="{DynamicResource SentBrushForegroundMuted}"
-                           Text="Cliquer sur une carte"/>
-
-                <ScrollViewer IsVisible="{Binding HasSelection}">
-                    <StackPanel Spacing="10">
-                        <TextBlock FontWeight="Bold" FontSize="16"
-                                   Foreground="{DynamicResource SentBrushForeground}"
-                                   Text="Détail"/>
-                        <Separator/>
-
-                        <StackPanel Orientation="Horizontal" Spacing="8">
-                            <controls:StatusLed Status="{Binding SelectedUnit.Status}"/>
-                            <TextBlock Text="{Binding SelectedUnit.Status, StringFormat='Statut : {0}'}"
-                                       Foreground="{DynamicResource SentBrushForeground}"
-                                       VerticalAlignment="Center"/>
-                        </StackPanel>
-
-                        <TextBlock Text="{Binding SelectedUnit.Battery, StringFormat='Batterie : {0:F0}%'}"
-                                   Foreground="{DynamicResource SentBrushForeground}"/>
-                        <controls:Sparkline Values="{Binding SelectedUnit.BatteryHistory}"
-                                            Stroke="{DynamicResource SentBrushSparklineBattery}"/>
-
-                        <TextBlock Text="{Binding SelectedUnit.Temperature, StringFormat='Température : {0:F2} °C'}"
-                                   Foreground="{DynamicResource SentBrushForeground}"/>
-                        <controls:Sparkline Values="{Binding SelectedUnit.TemperatureHistory}"
-                                            Stroke="{DynamicResource SentBrushSparklineTemperature}"/>
-
-                        <StackPanel Orientation="Horizontal" Spacing="8">
-                            <controls:SignalBars Value="{Binding SelectedUnit.Signal}"/>
-                            <TextBlock Text="{Binding SelectedUnit.Signal, StringFormat='Signal : {0}%'}"
-                                       Foreground="{DynamicResource SentBrushForeground}"
-                                       VerticalAlignment="Center"/>
-                        </StackPanel>
-                        <controls:Sparkline Values="{Binding SelectedUnit.SignalHistory}"
-                                            Stroke="{DynamicResource SentBrushSparklineSignal}"/>
-
-                        <TextBlock Text="{Binding SelectedUnit.LastSeen, StringFormat='Vu le : {0:HH:mm:ss}'}"
-                                   Foreground="{DynamicResource SentBrushForegroundMuted}"/>
-
-                        <Separator/>
-                        <TextBlock FontWeight="Bold"
-                                   Foreground="{DynamicResource SentBrushForeground}"
-                                   Text="Édition"/>
-
-                        <ContentControl Content="{Binding EditViewModel}">
-                            <ContentControl.ContentTemplate>
-                                <DataTemplate x:DataType="viewModels:EquipmentEditViewModel">
-                                    <StackPanel Spacing="8">
-                                        <TextBox Text="{Binding Name, Mode=TwoWay}" Watermark="Nom"/>
-                                        <TextBox Text="{Binding Zone, Mode=TwoWay}" Watermark="Zone"/>
-                                        <Button Content="Enregistrer"
-                                                Command="{Binding SaveCommand}"
-                                                HorizontalAlignment="Right"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ContentControl.ContentTemplate>
-                        </ContentControl>
-
-                    </StackPanel>
-                </ScrollViewer>
-            </Panel>
-        </Border>
-
-    </Grid>
 </UserControl>

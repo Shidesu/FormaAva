@@ -1,0 +1,93 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="using:Sentinel.ViewModels"
+             xmlns:controls="using:Sentinel.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+             x:Class="Sentinel.Views.EquipmentDetailView"
+             x:DataType="viewModels:EquipmentDetailViewModel"
+             Background="{DynamicResource SentBrushBackground}">
+
+    <ScrollViewer Padding="24">
+        <StackPanel Spacing="16" MaxWidth="600" HorizontalAlignment="Left">
+
+            <!-- Header -->
+            <StackPanel Orientation="Horizontal" Spacing="12" VerticalAlignment="Center">
+                <controls:StatusLed Status="{Binding Unit.Status}" Width="20" Height="20"/>
+                <TextBlock Text="{Binding Unit.Name}"
+                           FontSize="24" FontWeight="Bold"
+                           Foreground="{DynamicResource SentBrushForeground}"
+                           VerticalAlignment="Center"/>
+                <Border Background="{DynamicResource SentBrushStatusDegraded}"
+                        CornerRadius="4" Padding="6,2"
+                        IsVisible="{Binding Unit.HasAlert}"
+                        VerticalAlignment="Center">
+                    <TextBlock Text="⚠ Alerte" FontSize="12"/>
+                </Border>
+            </StackPanel>
+
+            <TextBlock Text="{Binding Unit.Zone, StringFormat='Zone : {0}'}"
+                       FontSize="14"
+                       Foreground="{DynamicResource SentBrushForegroundMuted}"/>
+            <TextBlock Text="{Binding Unit.LastSeen, StringFormat='Dernière mise à jour : {0:HH:mm:ss}'}"
+                       FontSize="12"
+                       Foreground="{DynamicResource SentBrushForegroundMuted}"/>
+
+            <Separator/>
+
+            <!-- Batterie -->
+            <StackPanel Spacing="6">
+                <TextBlock Text="{Binding Unit.Battery, StringFormat='Batterie : {0:F0}%'}"
+                           FontSize="16" Foreground="{DynamicResource SentBrushForeground}"/>
+                <controls:Sparkline Values="{Binding Unit.BatteryHistory}"
+                                    Stroke="{DynamicResource SentBrushSparklineBattery}"
+                                    Height="48"/>
+            </StackPanel>
+
+            <!-- Température -->
+            <StackPanel Spacing="6">
+                <TextBlock Text="{Binding Unit.Temperature, StringFormat='Température : {0:F2} °C'}"
+                           FontSize="16" Foreground="{DynamicResource SentBrushForeground}"/>
+                <controls:Sparkline Values="{Binding Unit.TemperatureHistory}"
+                                    Stroke="{DynamicResource SentBrushSparklineTemperature}"
+                                    Height="48"/>
+            </StackPanel>
+
+            <!-- Signal -->
+            <StackPanel Spacing="6">
+                <StackPanel Orientation="Horizontal" Spacing="10">
+                    <controls:SignalBars Value="{Binding Unit.Signal}" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding Unit.Signal, StringFormat='Signal : {0}%'}"
+                               FontSize="16" Foreground="{DynamicResource SentBrushForeground}"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+                <controls:Sparkline Values="{Binding Unit.SignalHistory}"
+                                    Stroke="{DynamicResource SentBrushSparklineSignal}"
+                                    Height="48"/>
+            </StackPanel>
+
+            <Separator/>
+
+            <!-- Formulaire d'édition (réutilisé de J2) -->
+            <TextBlock FontWeight="Bold" FontSize="14"
+                       Foreground="{DynamicResource SentBrushForeground}"
+                       Text="Édition"/>
+            <ContentControl Content="{Binding EditViewModel}">
+                <ContentControl.ContentTemplate>
+                    <DataTemplate x:DataType="viewModels:EquipmentEditViewModel">
+                        <StackPanel Spacing="8">
+                            <TextBox Text="{Binding Name, Mode=TwoWay}" Watermark="Nom"/>
+                            <TextBox Text="{Binding Zone, Mode=TwoWay}" Watermark="Zone"/>
+                            <Button Content="Enregistrer"
+                                    Command="{Binding SaveCommand}"
+                                    HorizontalAlignment="Right"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ContentControl.ContentTemplate>
+            </ContentControl>
+
+        </StackPanel>
+    </ScrollViewer>
+
+</UserControl>

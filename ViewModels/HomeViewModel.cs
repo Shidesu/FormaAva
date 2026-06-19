@@ -9,6 +9,7 @@ namespace Sentinel.ViewModels;
 public partial class HomeViewModel : ViewModelBase
 {
     private readonly IEquipmentService _equipmentService;
+    private readonly INavigationService _navigation;
     private readonly ObservableCollection<EquipmentUnitViewModel> _units = new();
     private readonly Dictionary<Guid, EquipmentUnitViewModel> _unitMap = new();
 
@@ -30,9 +31,14 @@ public partial class HomeViewModel : ViewModelBase
     [RelayCommand]
     private void SelectUnit(EquipmentUnitViewModel unit) => SelectedUnit = unit;
 
-    public HomeViewModel(IEquipmentService equipmentService)
+    [RelayCommand]
+    private void OpenDetail(EquipmentUnitViewModel unit) =>
+        _navigation.NavigateTo(new EquipmentDetailViewModel(unit, _navigation));
+
+    public HomeViewModel(IEquipmentService equipmentService, INavigationService navigation)
     {
         _equipmentService = equipmentService;
+        _navigation = navigation;
 
         Units = new DataGridCollectionView(_units)
         {

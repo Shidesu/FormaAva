@@ -29,7 +29,7 @@
                                     Background="Transparent"
                                     BorderThickness="0"
                                     Margin="6"
-                                    Command="{Binding $parent[ItemsControl].((viewModels:HomeViewModel)DataContext).SelectUnitCommand}"
+                                    Command="{Binding $parent[ItemsControl].((viewModels:HomeViewModel)DataContext).OpenDetailCommand}"
                                     CommandParameter="{Binding}">
                                 <Border Background="{DynamicResource SentBrushSurface}"
                                         BorderBrush="{DynamicResource SentBrushBorder}"

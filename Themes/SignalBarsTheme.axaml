@@ -1,0 +1,53 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:Sentinel.Controls">
+
+    <ControlTheme x:Key="{x:Type controls:SignalBars}" TargetType="controls:SignalBars">
+        <Setter Property="Width" Value="22"/>
+        <Setter Property="Height" Value="16"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <!-- 4 bars of increasing height, aligned at bottom -->
+                <Grid VerticalAlignment="Bottom"
+                      HorizontalAlignment="Center"
+                      ColumnDefinitions="4,2,4,2,4,2,4"
+                      Height="16">
+                    <Rectangle x:Name="Bar1" Grid.Column="0"
+                               Width="4" Height="4"
+                               VerticalAlignment="Bottom"
+                               Fill="#444444" RadiusX="1" RadiusY="1"/>
+                    <Rectangle x:Name="Bar2" Grid.Column="2"
+                               Width="4" Height="8"
+                               VerticalAlignment="Bottom"
+                               Fill="#444444" RadiusX="1" RadiusY="1"/>
+                    <Rectangle x:Name="Bar3" Grid.Column="4"
+                               Width="4" Height="12"
+                               VerticalAlignment="Bottom"
+                               Fill="#444444" RadiusX="1" RadiusY="1"/>
+                    <Rectangle x:Name="Bar4" Grid.Column="6"
+                               Width="4" Height="16"
+                               VerticalAlignment="Bottom"
+                               Fill="#444444" RadiusX="1" RadiusY="1"/>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- :l1, :l2, :l3, :l4 are cumulative (l2 => l1 is also set) -->
+        <Style Selector="^:l1 /template/ Rectangle#Bar1">
+            <Setter Property="Fill" Value="#22DD77"/>
+        </Style>
+
+        <Style Selector="^:l2 /template/ Rectangle#Bar2">
+            <Setter Property="Fill" Value="#22DD77"/>
+        </Style>
+
+        <Style Selector="^:l3 /template/ Rectangle#Bar3">
+            <Setter Property="Fill" Value="#22DD77"/>
+        </Style>
+
+        <Style Selector="^:l4 /template/ Rectangle#Bar4">
+            <Setter Property="Fill" Value="#22DD77"/>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

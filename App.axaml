@@ -12,6 +12,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceInclude Source="avares://Sentinel/Themes/StatusLedTheme.axaml"/>
+                <ResourceInclude Source="avares://Sentinel/Themes/SignalBarsTheme.axaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

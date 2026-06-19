@@ -74,7 +74,11 @@
                     </StackPanel>
                     <TextBlock Text="{Binding SelectedUnit.Battery, StringFormat='Batterie : {0:F0}%'}"/>
                     <TextBlock Text="{Binding SelectedUnit.Temperature, StringFormat='Température : {0:F2} °C'}"/>
-                    <TextBlock Text="{Binding SelectedUnit.Signal, StringFormat='Signal : {0}%'}"/>
+                    <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                        <controls:SignalBars Value="{Binding SelectedUnit.Signal}"/>
+                        <TextBlock Text="{Binding SelectedUnit.Signal, StringFormat='Signal : {0}%'}"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
                     <TextBlock Text="{Binding SelectedUnit.LastSeen, StringFormat='Vu le : {0:HH:mm:ss}'}"/>
 
                     <Separator/>

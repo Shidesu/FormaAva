@@ -16,12 +16,16 @@
                 BorderThickness="0,0,0,1"
                 Padding="16,8">
             <Grid ColumnDefinitions="*,Auto">
-                <TextBlock Grid.Column="0"
-                           Text="SENTINEL"
-                           FontWeight="Bold"
-                           FontSize="16"
-                           Foreground="{DynamicResource SentBrushForeground}"
-                           VerticalAlignment="Center"/>
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                    <Button Content="← Retour"
+                            Command="{Binding GoBackCommand}"
+                            IsVisible="{Binding CanGoBack}"/>
+                    <TextBlock Text="SENTINEL"
+                               FontWeight="Bold"
+                               FontSize="16"
+                               Foreground="{DynamicResource SentBrushForeground}"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
                 <Button Grid.Column="1"
                         Content="☀ / ☾"
                         Command="{Binding ToggleThemeCommand}"

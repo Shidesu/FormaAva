@@ -27,6 +27,7 @@ public partial class App : Application
 
         var serviceCollection = new ServiceCollection();
 
+        serviceCollection.AddSingleton<INavigationService, NavigationService>();
         serviceCollection.AddSingleton<MainViewModel>();
         serviceCollection.AddSingleton<HomeViewModel>();
         serviceCollection.AddSingleton<IEquipmentService, MockEquipmentService>();

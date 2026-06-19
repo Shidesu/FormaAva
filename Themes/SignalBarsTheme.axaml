@@ -34,19 +34,19 @@
 
         <!-- :l1, :l2, :l3, :l4 are cumulative (l2 => l1 is also set) -->
         <Style Selector="^:l1 /template/ Rectangle#Bar1">
-            <Setter Property="Fill" Value="#22DD77"/>
+            <Setter Property="Fill" Value="{DynamicResource SentBrushStatusOperational}"/>
         </Style>
 
         <Style Selector="^:l2 /template/ Rectangle#Bar2">
-            <Setter Property="Fill" Value="#22DD77"/>
+            <Setter Property="Fill" Value="{DynamicResource SentBrushStatusOperational}"/>
         </Style>
 
         <Style Selector="^:l3 /template/ Rectangle#Bar3">
-            <Setter Property="Fill" Value="#22DD77"/>
+            <Setter Property="Fill" Value="{DynamicResource SentBrushStatusOperational}"/>
         </Style>
 
         <Style Selector="^:l4 /template/ Rectangle#Bar4">
-            <Setter Property="Fill" Value="#22DD77"/>
+            <Setter Property="Fill" Value="{DynamicResource SentBrushStatusOperational}"/>
         </Style>
     </ControlTheme>
 

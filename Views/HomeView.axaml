@@ -74,11 +74,11 @@
                     </StackPanel>
                     <TextBlock Text="{Binding SelectedUnit.Battery, StringFormat='Batterie : {0:F0}%'}"/>
                     <controls:Sparkline Values="{Binding SelectedUnit.BatteryHistory}"
-                                        Stroke="#22DD77"/>
+                                        Stroke="{DynamicResource SentBrushSparklineBattery}"/>
 
                     <TextBlock Text="{Binding SelectedUnit.Temperature, StringFormat='Température : {0:F2} °C'}"/>
                     <controls:Sparkline Values="{Binding SelectedUnit.TemperatureHistory}"
-                                        Stroke="#FF8C00"/>
+                                        Stroke="{DynamicResource SentBrushSparklineTemperature}"/>
 
                     <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
                         <controls:SignalBars Value="{Binding SelectedUnit.Signal}"/>
@@ -86,7 +86,7 @@
                                    VerticalAlignment="Center"/>
                     </StackPanel>
                     <controls:Sparkline Values="{Binding SelectedUnit.SignalHistory}"
-                                        Stroke="#22AAFF"/>
+                                        Stroke="{DynamicResource SentBrushSparklineSignal}"/>
                     <TextBlock Text="{Binding SelectedUnit.LastSeen, StringFormat='Vu le : {0:HH:mm:ss}'}"/>
 
                     <Separator/>

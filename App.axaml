@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="Sentinel.App"
              xmlns:local="using:Sentinel"
-             RequestedThemeVariant="Default">
+             RequestedThemeVariant="Dark">
 
     <Application.DataTemplates>
         <local:ViewLocator/>
@@ -11,6 +11,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://Sentinel/Themes/Tokens.axaml"/>
                 <ResourceInclude Source="avares://Sentinel/Themes/StatusLedTheme.axaml"/>
                 <ResourceInclude Source="avares://Sentinel/Themes/SignalBarsTheme.axaml"/>
                 <ResourceInclude Source="avares://Sentinel/Themes/SparklineTheme.axaml"/>

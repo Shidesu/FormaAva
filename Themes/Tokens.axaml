@@ -1,0 +1,50 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.ThemeDictionaries>
+
+        <ResourceDictionary x:Key="Dark">
+            <!-- Surfaces -->
+            <SolidColorBrush x:Key="SentBrushBackground"     Color="#0D1117"/>
+            <SolidColorBrush x:Key="SentBrushSurface"        Color="#161B22"/>
+            <SolidColorBrush x:Key="SentBrushSurfaceAlt"     Color="#21262D"/>
+            <!-- Text -->
+            <SolidColorBrush x:Key="SentBrushForeground"     Color="#E6EDF3"/>
+            <SolidColorBrush x:Key="SentBrushForegroundMuted" Color="#8B949E"/>
+            <!-- Chrome -->
+            <SolidColorBrush x:Key="SentBrushBorder"         Color="#30363D"/>
+            <SolidColorBrush x:Key="SentBrushAccent"         Color="#1F6FEB"/>
+            <!-- Status -->
+            <SolidColorBrush x:Key="SentBrushStatusOperational" Color="#22DD77"/>
+            <SolidColorBrush x:Key="SentBrushStatusDegraded"    Color="#FFAA00"/>
+            <SolidColorBrush x:Key="SentBrushStatusOffline"     Color="#FF3333"/>
+            <!-- Sparkline strokes -->
+            <SolidColorBrush x:Key="SentBrushSparklineBattery"     Color="#22DD77"/>
+            <SolidColorBrush x:Key="SentBrushSparklineTemperature" Color="#FF8C00"/>
+            <SolidColorBrush x:Key="SentBrushSparklineSignal"      Color="#22AAFF"/>
+        </ResourceDictionary>
+
+        <ResourceDictionary x:Key="Light">
+            <!-- Surfaces -->
+            <SolidColorBrush x:Key="SentBrushBackground"     Color="#F6F8FA"/>
+            <SolidColorBrush x:Key="SentBrushSurface"        Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="SentBrushSurfaceAlt"     Color="#EFF1F3"/>
+            <!-- Text -->
+            <SolidColorBrush x:Key="SentBrushForeground"     Color="#1F2328"/>
+            <SolidColorBrush x:Key="SentBrushForegroundMuted" Color="#636C76"/>
+            <!-- Chrome -->
+            <SolidColorBrush x:Key="SentBrushBorder"         Color="#D0D7DE"/>
+            <SolidColorBrush x:Key="SentBrushAccent"         Color="#0969DA"/>
+            <!-- Status -->
+            <SolidColorBrush x:Key="SentBrushStatusOperational" Color="#16A34A"/>
+            <SolidColorBrush x:Key="SentBrushStatusDegraded"    Color="#D97706"/>
+            <SolidColorBrush x:Key="SentBrushStatusOffline"     Color="#DC2626"/>
+            <!-- Sparkline strokes -->
+            <SolidColorBrush x:Key="SentBrushSparklineBattery"     Color="#16A34A"/>
+            <SolidColorBrush x:Key="SentBrushSparklineTemperature" Color="#EA580C"/>
+            <SolidColorBrush x:Key="SentBrushSparklineSignal"      Color="#2563EB"/>
+        </ResourceDictionary>
+
+    </ResourceDictionary.ThemeDictionaries>
+
+</ResourceDictionary>

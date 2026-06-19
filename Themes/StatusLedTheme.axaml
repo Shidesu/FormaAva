@@ -1,0 +1,39 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:Sentinel.Controls">
+
+    <ControlTheme x:Key="{x:Type controls:StatusLed}" TargetType="controls:StatusLed">
+        <Setter Property="Width" Value="14"/>
+        <Setter Property="Height" Value="14"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Ellipse x:Name="PART_Led"
+                         Width="{TemplateBinding Width}"
+                         Height="{TemplateBinding Height}"
+                         Fill="#555555"/>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:operational /template/ Ellipse#PART_Led">
+            <Setter Property="Fill" Value="#22DD77"/>
+            <Setter Property="Effect">
+                <DropShadowEffect Color="#22DD77" BlurRadius="10" OffsetX="0" OffsetY="0" Opacity="0.9"/>
+            </Setter>
+        </Style>
+
+        <Style Selector="^:degraded /template/ Ellipse#PART_Led">
+            <Setter Property="Fill" Value="#FFAA00"/>
+            <Setter Property="Effect">
+                <DropShadowEffect Color="#FFAA00" BlurRadius="10" OffsetX="0" OffsetY="0" Opacity="0.9"/>
+            </Setter>
+        </Style>
+
+        <Style Selector="^:offline /template/ Ellipse#PART_Led">
+            <Setter Property="Fill" Value="#FF3333"/>
+            <Setter Property="Effect">
+                <DropShadowEffect Color="#FF3333" BlurRadius="10" OffsetX="0" OffsetY="0" Opacity="0.9"/>
+            </Setter>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>
